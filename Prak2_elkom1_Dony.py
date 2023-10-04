@@ -9,52 +9,75 @@ print("\n \n")
 
 import math
 
-def hitung_a(b, c):
-    return math.sqrt(c**2 - b**2)
+while True:
 
-def hitung_b(a, c):
-    return math.sqrt(c**2 - a**2)
+    print("""
+          
+Kalkulator Pytagoras
+          
+a.) hitung sisi A <>
+b.) hitung sisi B <>
+c.) hitung sisi C <>
+""")
 
-def hitung_c(a, b):
-    return math.sqrt(a**2 + b**2)
+    opsi = input("Masukan opsi : ")
 
-def main():
-    print("Menghitung Pytagoras")
-    print("a.) menghitung sisi a")
-    print("b.) menghitung sisi b")
-    print("c.) menghitung sisi c")
-    print("\n \n")
+    if opsi in ("a", "A"):
 
-    opsi = str(input("masukan opsi : "))
-    print("\n \n")
+        b = input("masukan angka b : ")
+        c = input("masukan angka c : ")
 
-    #menghitung sisi a
-    if opsi == "a":
-        b = float(input("Masukan sisi b : "))
-        c = float(input("Masukan sisi c : "))
-        while c < b:
-            print("Nilai c harus lebih besar atau sama dengan nilai b.")
-            c = float(input("Masukkan nilai sisi c: "))
-        sisi_a = hitung_a(b, c)
-        print(f"Sisi a = {sisi_a}")
-    #mengitung sisi b
-    elif opsi == "b":
-        a = float(input("masukan sisi a : "))
-        c = float(input("masukan sisi c : "))
-        while c < a:
-            print("Nilai c harus lebih besar atau sama dengan nilai a.")
-            c = float(input("Masukkan nilai sisi c: "))
-        sisi_b = hitung_b(a, c)
-        print(f"Sisi b = {sisi_b}")
-    #menghitung sisi c
-    elif opsi == "c":
-        a = float(input("masukan sisi a : "))
-        b = float(input("masukan sisi b : "))
-        sisi_c =  hitung_c(a, b)
-        print("sisi c = ", sisi_c)
+        if not b.isdigit() or not c.isdigit():
+            print("\nmasukan angka, bukan huruf.")
+            continue
+        angkaB = float(b)
+        angkaC = float(c)
+        if angkaC < angkaB:
+            print("c harus lebih besar dari b")
+            continue
+        hitungA = math.sqrt(angkaC**2 - angkaB**2)
+
+        print(f"hasilnya, sisi a adalah {hitungA}")
+        
+
+    elif opsi in ("b", "B"):
+
+        a = input("masukan angka a : ")
+        c = input("masukan angka c : ")
+
+        if not a.isdigit() or not c.isdigit():
+            print("\nmasukan angka, bukan huruf.")
+            continue
+        angkaA = float(a)
+        angkaC = float(c)
+        if angkaC < angkaA:
+            print("c harus lebih besar dari a")
+            continue
+        hitungB = math.sqrt(angkaC**2 - angkaA**2)
+        print(f"hasilnya, sisi b adalah {hitungB}")
+
+    elif opsi in ("c", "C"):
+
+        a = input("masukan angka a : ")
+        b = input("masukan angka b : ")
+
+        if not a.isdigit() or not b.isdigit():
+            print("\nmasukan angka, bukan huruf.")
+        angkaA = float(a)
+        angkaB = float(b)
+
+        hitungC = math.sqrt(angkaA**2 + angkaB**2)
+        print(f"hasilnya, sisi c adalah {hitungC}")
     else:
-        print("opsi tidak valid.")
+        print("opsi tidak valid!")
 
-if __name__ == "__main__":
-    main()
+    ulangi = input("ulangi proses? (y/n) : ")
+    if ulangi.lower() in ("n", "no"):
+        break
+
+    if ulangi.lower() in ("y", "yes"):
+        continue
+
+    else:
+        break
     
